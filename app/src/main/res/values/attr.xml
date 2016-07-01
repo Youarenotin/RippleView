@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="RippleView">
-        <attr name="rippleColor" format="reference"/>
-        <attr name="rippleType" format="integer"/>
-        <attr name="hasToZoom" format="boolean"/>
-        <attr name="isCentered" format="boolean"/>
-        <attr name="DURATION" format="integer"/>
-        <attr name="FRAME_RATE" format="integer"/>
-        <attr name="PAINT_ALPHA" format="integer"/>
-        <attr name="ripplePadding" format="integer"/>
-        <attr name="zoomScale" format="float"/>
-        <attr name="zoomDuration" format="integer"/>
+    <declare-styleable name="RippView">
+        <attr name="rv_color" format="reference"/>
+        <attr name="rv_type" format="integer"/>
+        <attr name="rv_zoom" format="boolean"/>
+        <attr name="rv_centered" format="boolean"/>
+        <attr name="rv_rippleDuration" format="integer"/>
+        <attr name="rv_framerate" format="integer"/>
+        <attr name="rv_alpha" format="integer"/>
+        <attr name="rv_ripplePadding" format="dimension"/>
+        <attr name="rv_zoomScale" format="float"/>
+        <attr name="rv_zoomDuration" format="integer"/>
     </declare-styleable>
+
+    <declare-styleable name="RippleButton">
+        <attr name="rippleColor" format="color" />
+        <attr name="alphaFactor" format="float" />
+        <attr name="hover" format="boolean" />
+    </declare-styleable>
+
 </resources>
