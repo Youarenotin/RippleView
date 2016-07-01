@@ -89,11 +89,17 @@ public class RippView extends RelativeLayout {
         gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onSingleTapConfirmed(MotionEvent e) {
+                return false;
+            }
+
+            @Override
+            public boolean onDoubleTap(MotionEvent e) {
                 return true;
             }
+
             @Override
             public boolean onSingleTapUp(MotionEvent e) {
-                return true;
+                return false;
             }
         });
         this.setDrawingCacheEnabled(true);

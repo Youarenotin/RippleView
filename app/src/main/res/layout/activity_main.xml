@@ -18,14 +18,16 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
         app:rv_type="2"
-        app:rv_zoom="false"
+        app:rv_zoom="true"
+        app:rv_zoomDuration="200"
+        app:rv_zoomScale="1.2"
         >
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hello World!"
             android:padding="35dp"
-
+            android:background="#ffffff"
             android:textSize="24sp"
             android:gravity="center"/>
     </com.youarenotin.rippleview.RippView>
