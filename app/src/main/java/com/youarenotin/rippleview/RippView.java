@@ -230,7 +230,6 @@ public class RippView extends RelativeLayout {
             if (rippleType == 1 && originBitmap == null)
                 originBitmap = getDrawingCache(true);//取出这个view转化成的bitmap
             invalidate();//导致ondraw被调用
-//            this.performClick();
         }
         childView.onTouchEvent(event);//这里可以直接在onInterceptTouchEvent里返回true 通过这句将触摸事件传递到子view,也可以
         return true;
