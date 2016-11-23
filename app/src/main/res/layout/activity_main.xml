@@ -6,29 +6,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.youarenotin.rippleview.MainActivity">
 
     <com.youarenotin.rippleview.RippView
         android:layout_below="@+id/rippleBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
         app:rv_type="2"
+        app:rv_alpha="100"
+        app:rv_framerate="5"
         app:rv_zoom="true"
         app:rv_zoomDuration="200"
-        app:rv_zoomScale="1.2"
+        app:rv_zoomScale="0.95"
+        app:rv_ripplePadding="0dp"
         >
-        <Button
-            android:layout_width="wrap_content"
+        <com.youarenotin.rippleview.MyButton
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Hello World!"
             android:padding="35dp"
-            android:background="#ffffff"
-            android:textSize="24sp"
+            android:onClick="click"
+            android:background="#dff7ff"
+            android:textSize="18sp"
             android:gravity="center"/>
     </com.youarenotin.rippleview.RippView>
 

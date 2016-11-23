@@ -15,6 +15,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 
 import com.nineoldandroids.view.ViewHelper;
@@ -25,22 +26,44 @@ import com.nineoldandroids.view.ViewHelper;
  */
 public class RippleButton extends Button {
 
+    /**
+     * 按下x坐标
+     */
     private float mDownX;
+    /**
+     * 按下y坐标
+     */
     private float mDownY;
+    /**
+     * 透明度因子
+     */
     private float mAlphaFactor;
+    /**
+     * dp与像素的比例
+     */
     private float mDensity;
+    /**
+     * 波纹半径
+     */
     private float mRadius;
+    /**
+     * 波纹最大半径
+     */
     private float mMaxRadius;
-
+    /**
+     * 波纹颜色
+     */
     private int mRippleColor;
+    /**
+     * 波纹
+     */
     private boolean mIsAnimating = false;
     private boolean mHover = true;
-
     private RadialGradient mRadialGradient;
     private Paint mPaint;
     private ObjectAnimator mRadiusAnimator;
 
-    private int dp(int dp) {
+    private int dpToPix(int dp) {
         return (int) (dp * mDensity + 0.5f);
     }
 
@@ -105,10 +128,10 @@ public class RippleButton extends Button {
             mDownX = event.getX();
             mDownY = event.getY();
 
-            mRadiusAnimator = ObjectAnimator.ofFloat(this, "radius", 0, dp(50))
+            mRadiusAnimator = ObjectAnimator.ofFloat(this, "radius", 0, dpToPix(50))
                     .setDuration(400);
             mRadiusAnimator
-                    .setInterpolator(new AccelerateDecelerateInterpolator());
+                    .setInterpolator(new LinearInterpolator());
             mRadiusAnimator.addListener(new Animator.AnimatorListener() {
                 @Override
                 public void onAnimationStart(Animator animator) {
@@ -142,12 +165,12 @@ public class RippleButton extends Button {
             mDownY = event.getY();
 
             // Cancel the ripple animation when moved outside
-            if (mAnimationIsCancel = !mRect.contains(
+            if (mAnimationIsCancel =!mRect.contains(
                     getLeft() + (int) event.getX(),
                     getTop() + (int) event.getY())) {
                 setRadius(0);
             } else {
-                setRadius(dp(50));
+                setRadius(dpToPix(40));
             }
             if (!superResult) {
                 return true;
@@ -164,7 +187,7 @@ public class RippleButton extends Button {
             if (mIsAnimating) {
                 mRadiusAnimator.cancel();
             }
-            mRadiusAnimator = ObjectAnimator.ofFloat(this, "radius", dp(50),
+            mRadiusAnimator = ObjectAnimator.ofFloat(this, "radius", dpToPix(40),
                     targetRadius);
             mRadiusAnimator.setDuration(500);
             mRadiusAnimator
